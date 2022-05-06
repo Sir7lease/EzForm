@@ -5,7 +5,7 @@
  *
  * @author  Hammoumi Abdelaziz
  */
-class InputForm
+class InputForm extends FormTag
 {
 	
 }

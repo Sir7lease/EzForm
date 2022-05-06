@@ -31,7 +31,7 @@
 			if(count(self::$subFolder)>0) {
 				self::arrayDir(self::$subFolder[0]);
 			}
-		}	
+		}
 	}
 
 	spl_autoload_register( function ($class) {
@@ -45,13 +45,16 @@
 		}
 	});
 	
+	
 
 	$obj = new FormTag;
+	
+	$obj->setForm();
 	echo "<pre>";
 	print_r ( $obj );
 	echo "</pre>";
 	
-	echo base64_decode($obj->openTagForm);
+	//echo base64_decode($obj->openTagForm);
 	  
 	  
 
