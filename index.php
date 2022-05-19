@@ -27,15 +27,15 @@
         ]);
 
         $fields = (new FormFields())
-            ->addField((new InputTag())->addAttr(['name'=>'email']))
-            ->addField((new InputTag())->addAttr(['type'=>'password', 'name'=>'pwd']))
+            ->addField((new InputTag('login'))->addAttr(['name'=>'email']))
+            ->addField((new InputTag('password'))->addAttr(['type'=>'password', 'name'=>'pwd']))
             ->addField((new InputTag())->addAttr(['type'=>'submit', 'value'=>'Send']));
 
 
 
         $formBuilder = new FormBuilder($formTag, $fields);
 
-        echo (new Form($formBuilder))->showForm();
+        (new Form($formBuilder))->showForm();
 				
 		
 		

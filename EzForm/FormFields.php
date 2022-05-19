@@ -11,6 +11,11 @@ class FormFields
     private static int $i = 0;
     private array $fields = [];
 
+    /**
+     * Add a new field that will be added into the form by the FormBuilder Class
+     * @param FieldInterface $field
+     * @return $this
+     */
     public function addField(FieldInterface $field): self
     {
         $fieldName = explode('\\',$field::class);
@@ -18,6 +23,9 @@ class FormFields
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getFormFields(): array
     {
         return $this->fields;

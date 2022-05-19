@@ -1,9 +1,5 @@
 <?php
 namespace EzForm;
-/**
-*	TODO: 	- Check/verify/validate the values set by the user before putting it into the form as attribute otherwise throw error.
-**/
-
 
 use EzForm\FieldAttributes;
 
@@ -19,14 +15,15 @@ class FormTag extends FieldAttributes
 
 	public function __construct()
 	{
-		// Assign values to the attributes.
 		$this->attributes = [
 			'action' => '',
 			'method' => 'GET',
 		];
 	}
 
-
+    /**
+     * @return array
+     */
 	public function getFormTagAttributes(): array
 	{
 		return $this->attributes;

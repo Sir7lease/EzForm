@@ -8,49 +8,26 @@ namespace EzForm;
  */
 class InputTag extends FieldAttributes implements FieldInterface
 {
+    /** @var int $index incremented each time that the function addField() is called */
     private static int $index = 0;
+
+    /** @var string $labelName will contain the label name for each field added through each new instance of this class */
+    public string $labelName;
 
     /** @var string[] $attributes contains all the attributes that will be added in the form tag */
     public array $attributes = [];
 
-    public function __construct(string $type='text', string $name='field_')
+    /**
+     * @param string $labelName
+     * @param string $type
+     * @param string $name
+     */
+    public function __construct(string $labelName='', string $type='text', string $name='field_')
     {
+        $this->labelName = $labelName;
         $this->attributes = [
             'type' => $type,
             'name' => $name . self::$index++,
         ];
     }
-
-
-
-
-
-
-    /* Make that into array and use in_array to check if the type is correct
-     * <input type='button">
-    <input type="checkbox">
-    <input type="color">
-    <input type="date">
-    <input type="datetime-local">
-    <input type="email">
-    <input type="file">
-    <input type="hidden">
-    <input type="image">
-    <input type="month">
-    <input type="number">
-    <input type="password">
-    <input type="radio">
-    <input type="range">
-    <input type="reset">
-    <input type="search">
-    <input type="submit">
-    <input type="tel">
-    <input type="text"> (default value)
-    <input type="time">
-    <input type="url">
-    <input type="week">*/
-
-
-
-
 }

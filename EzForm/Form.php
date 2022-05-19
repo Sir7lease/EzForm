@@ -1,8 +1,13 @@
 <?php
 namespace EzForm;
 
-
-class Form
+/**
+ * Final class that display the form on the page
+ * showForm() to display it
+ *
+ * @author  Hammoumi Abdelaziz
+ */
+final class Form
 {
     private FormBuilder $form;
 
@@ -15,11 +20,10 @@ class Form
     }
 
     /**
-     * Display the form
-     * @return string
+     * Display the form on the page
      */
-    public function showForm(): string
+    public function showForm(): void
     {
-        return $this->form->buildForm();
+        echo  $this->form->buildForm();
     }
 }
