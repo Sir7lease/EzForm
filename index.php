@@ -10,7 +10,9 @@
 
 		use EzForm\Form;
         use EzForm\FormBuilder;
+        use EzForm\FormFields;
         use EzForm\FormTag;
+        use EzForm\InputTag;
 
 		spl_autoload_register( function ($class) {
 			$class = str_replace('\\','/',$class) .'.php';
@@ -18,13 +20,20 @@
 		});
 
 
-        $formTag = new FormTag();
-        $formTag
-            ->addAttrId('ezform fjdif')
-            ->addAttrClass('simpleForm')
-            ->addAttrMethod('POST');
+        $formTag = (new FormTag())->addAttr([
+            'id'=>'toto',
+            'class'=>'simpleForm color-blue',
+            'method'=>'POST'
+        ]);
 
-        $formBuilder = new FormBuilder($formTag);
+        $fields = (new FormFields())
+            ->addField((new InputTag())->addAttr(['name'=>'email']))
+            ->addField((new InputTag())->addAttr(['type'=>'password', 'name'=>'pwd']))
+            ->addField((new InputTag())->addAttr(['type'=>'submit', 'value'=>'Send']));
+
+
+
+        $formBuilder = new FormBuilder($formTag, $fields);
 
         echo (new Form($formBuilder))->showForm();
 				

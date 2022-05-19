@@ -1,10 +1,25 @@
 <?php
 namespace EzForm;
 
-class FormFields extends FieldAttributes
+/**
+ * This Class allows you to add fields (input, select...) in you form
+ *
+ * @author  Hammoumi Abdelaziz
+ */
+class FormFields
 {
-    public function addInput()
-    {
+    private static int $i = 0;
+    private array $fields = [];
 
+    public function addField(FieldInterface $field): self
+    {
+        $fieldName = explode('\\',$field::class);
+        $this->fields[array_pop($fieldName) .'_'. self::$i++] = $field;
+        return $this;
+    }
+
+    public function getFormFields(): array
+    {
+        return $this->fields;
     }
 }

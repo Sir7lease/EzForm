@@ -1,9 +1,6 @@
 <?php
 namespace EzForm;
 
-use EzForm\FormFields;
-use EzForm\FormTag;
-
 class FormBuilder
 {
     public function __construct(
@@ -13,12 +10,32 @@ class FormBuilder
 
     public function buildForm(): string
     {
-        // TODO : here the logic to build the form
-        $attributes="";
-        foreach($this->formTag->getFormTagAttributes() as $attr => $val)
-            $attributes .= " $attr='$val'";
+        $attributesForm='';
+        $fields ='';
+        foreach($this->formTag->getFormTagAttributes() as $name => $value)
+            $attributesForm .= " $name='$value'";
+        $openForm = "<form $attributesForm>";
 
-        return "<form $attributes>";
 
+        foreach ($this->formFields->getFormFields() as $fieldTagIndex => $attr) {
+            $attributesField = '';
+            // Getting the name class used to create the field
+            $fieldTag = explode('_', $fieldTagIndex);
+
+            // assemble all the attributes of the array into one string
+            foreach ($attr->attributes as $name => $value)
+                $attributesField .= " $name='$value'";
+
+            $fields .= $this->buildTagField($fieldTag[0], $attributesField);
+        }
+        return $openForm . $fields . "</form>";
+
+    }
+
+    public function buildTagField(string $fieldTag, string $attributesField): string
+    {
+        if ($fieldTag==='InputTag') {
+            return "<input $attributesField>";
+        }
     }
 }
