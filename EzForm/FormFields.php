@@ -1,6 +1,8 @@
 <?php
 namespace EzForm;
 
+use EzForm\Tags\FieldInterface;
+
 /**
  * This Class allows you to add fields (input, select...) in you form
  *

@@ -1,7 +1,7 @@
 <?php
-namespace EzForm;
+namespace EzForm\Tags;
 
-use EzForm\FieldAttributes;
+use EzForm\Attributes\FieldAttributes;
 
 /**
  * This Class set the attributes for the tag form, and open the tag form

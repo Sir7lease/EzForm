@@ -1,6 +1,8 @@
 <?php
 namespace EzForm;
 
+use EzForm\Tags\FormTag;
+
 /**
  * This Class will build the form with the form tag and all the fields created
  * with all their attributes
@@ -9,6 +11,15 @@ namespace EzForm;
  */
 class FormBuilder
 {
+    /** @var string $labelName will contain the label text of the field it's attached to */
+    private string $labelName;
+
+    /** @var string $labeFor will contain the 'for' attribute to target which field it's attached to */
+    private string $labeFor;
+
+    /** @var string $attributesField will contain all the attributes concatenated into a string */
+    private string $attributesField;
+
     /**
      * @param FormTag $formTag
      * @param FormFields $formFields
@@ -36,29 +47,38 @@ class FormBuilder
             // Getting the name class used to create the field
             $fieldTag = explode('_', $fieldTagIndex);
 
-            // assemble all the attributes of the array into one string
+            // Assemble all the attributes contained in the array into one string
             foreach ($attr->attributes as $name => $value)
                 $attributesField .= " $name='$value'";
 
-            $fields .= $this->buildTagField($fieldTag[0], $attributesField, $attr->labelName);
+            $this->labelName = $attr->labelName;
+            $this->labeFor = $attr->attributes['id'];
+            $this->attributesField = $attributesField;
+            $fields .= $this->buildField($fieldTag[0]);
         }
         return $openForm . $fields . "</form>";
-
     }
 
     /**
      * Build a field with its label when needed
      * @param string $fieldTag
-     * @param string $attributesField
-     * @param string $labelName
      * @return string
      */
-    public function buildTagField(string $fieldTag, string $attributesField, string $labelName): string
+    private function buildField(string $fieldTag): string
     {
-        if ($fieldTag==='InputTag' && !strpos($attributesField, 'submit')) {
-            return "<label>$labelName<input $attributesField></label>";
-        }else{
-            return "<input $attributesField>";
-        }
+        $labelTag = "<label for='$this->labeFor'>$this->labelName</label>";
+        if ($fieldTag==='InputTag')
+            return $this->wrapField( (!strpos($this->attributesField, 'submit')) ? "$labelTag<input $this->attributesField>" : "<input $this->attributesField>" ) ;
+        else if ($fieldTag==='TextAreaTag')
+            return $this->wrapField("$labelTag<textarea $this->attributesField></textarea>");
+    }
+
+    private function wrapField(string $field): string
+    {
+        return <<< FIELDBLOCK
+            <div id="block_$this->labeFor">
+                $field
+            </div>
+        FIELDBLOCK;
     }
 }
