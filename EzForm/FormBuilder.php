@@ -52,21 +52,45 @@ class FormBuilder
 
         // Iterate array that contain the list of fields and prepare each one to be build as a field with all the attributes, options...
         foreach ($this->formFields->getFormFields() as $fieldTagIndex => $attr) {
-            $attributesField = '';
+            $this->optionsSelect = '';
 
-            // Assemble all the attributes contained in the array into one string
-            foreach ($attr->getAttributes() as $name => $value)
-                $attributesField .= " $name='$value'";
+            if(str_contains($fieldTagIndex, 'Fieldset_')){
 
-            $this->labelName = $attr->getLabelName();
-            $this->labelFor = $attr->getAttributes()['id'];
-            $this->attributesField = $attributesField;
+                $groupFields = '';
+                foreach ($attr as $name => $value) {
+                    $attributesField = array_map(fn($attrTag, $attrVal) => "$attrTag=$attrVal", array_keys($value->getAttributes()), array_values($value->getAttributes()));
 
-            if($this->getKeyField($fieldTagIndex)==='SelectTag')
-                foreach($this->formFields->getSelectOptions($fieldTagIndex) as $valueOptionAttr => $textOptionHTML)
-                    $this->optionsSelect .= "<option value='$valueOptionAttr'>$textOptionHTML</option>";
+                    $this->labelName = $value->getLabelName();
+                    $this->labelFor = $value->getAttributes()['id'];
+                    $this->attributesField = implode(' ', $attributesField);
 
-            $fields .= $this->buildField($this->getKeyField($fieldTagIndex));
+                    if(str_contains($name,'SelectTag'))
+                        $this->optionsSelect = implode(array_map(fn($valueOptionAttr, $textOptionHTML) => "<option value='$valueOptionAttr'>$textOptionHTML</option>", array_keys($value->selectOptions), array_values($value->selectOptions)));
+
+                    $groupFields .= $this->buildField($this->getKeyField($name));
+                }
+
+                $fields .= <<<FIELDSET
+                    <fieldset>
+                        <legend>$fieldTagIndex</legend>
+                        $groupFields
+                    </fieldset>
+                FIELDSET;
+
+            } else {
+
+                // Assemble all the attributes contained in the array into one string
+                $attributesField = array_map(fn($attrName, $attrValue) => "$attrName=$attrValue", array_keys($attr->getAttributes()), array_values($attr->getAttributes()));
+
+                $this->labelName = $attr->getLabelName();
+                $this->labelFor = $attr->getAttributes()['id'];
+                $this->attributesField = implode(' ', $attributesField);
+
+                if(str_contains($this->getKeyField($fieldTagIndex),'SelectTag'))
+                    $this->optionsSelect = implode(array_map(fn($valueOptionAttr, $textOptionHTML) => "<option value='$valueOptionAttr'>$textOptionHTML</option>", array_keys($attr->selectOptions), array_values($attr->selectOptions)));
+
+                $fields .= $this->buildField($this->getKeyField($fieldTagIndex));
+            }
         }
         return $openForm . $fields . "</form>";
     }
@@ -89,6 +113,7 @@ class FormBuilder
         }
         return false;
     }
+
 
     private function wrapField(string $field): string
     {

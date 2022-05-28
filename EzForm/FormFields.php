@@ -16,12 +16,23 @@ class FormFields
     /**
      * Add a new field that will be added into the form by the FormBuilder Class
      * @param FieldInterface $field
+     * @param string $fieldsetTarget default empty string
      * @return $this
      */
-    public function addField(FieldInterface $field): self
+    public function addField(FieldInterface $field, string $fieldsetTarget=''): self
     {
         $fieldName = explode('\\',$field::class);
-        $this->fields[array_pop($fieldName) .'_'. self::$i++] = $field;
+        if(!empty($fieldsetTarget))
+            $this->fields["Fieldset_$fieldsetTarget"][array_pop($fieldName) .'_'. self::$i++] = $field;
+        else
+            $this->fields[array_pop($fieldName) .'_'. self::$i++] = $field;
+
+        return $this;
+    }
+
+    public function addFieldset(string $legend): self
+    {
+        $this->fields["Fieldset_$legend"] = [];
         return $this;
     }
 

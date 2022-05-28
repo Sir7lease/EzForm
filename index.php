@@ -37,24 +37,19 @@ spl_autoload_register( function ($class) {
         ]);
 
         $fields = (new FormFields())
-            ->addField((new InputTag(labelName: 'Login'))->addAttr(['name'=>'email']))
-            ->addField((new InputTag(labelName: 'Password'))->addAttr(['type'=>'password', 'name'=>'pwd']))
+            ->addFieldset('Login')
+            ->addField((new InputTag(labelName: 'Login'))->addAttr(['name'=>'email']), 'Login')
+            ->addField((new InputTag(labelName: 'Password'))->addAttr(['type'=>'password', 'name'=>'pwd']), 'Login')
+            ->addField((new SelectTag(labelName: 'Job'))->addAttr(['name'=>'job'])->addOptions(['job_1'=>'DevBack','job_2'=>'DevFront','job_3'=>'FullStack']))
             ->addField((new TextAreaTag(labelName: 'Description')))
             ->addField((new InputTag(labelName: 'Upload products images'))->addAttr(['type'=>'file', 'name'=>'filesProducts[]']))
-            ->addField((new SelectTag(labelName: 'Gender'))->addAttr(['name'=>'gender'])->addOptions(['1'=>'Monsieur','2'=>'Madame']))
+            ->addField((new SelectTag(labelName: 'Gender'))->addAttr(['name'=>'gender'])->addOptions(['1'=>'Monsieur','2'=>'Madame']), 'Login')
             ->addField((new InputTag())->addAttr(['type'=>'submit', 'value'=>'Send']));
-
 
         $formBuilder = new FormBuilder($formTag, $fields);
 
         (new Form($formBuilder))->showForm();
 				
-		
-		
-		
-		
-		
-		
 		
 
 		
