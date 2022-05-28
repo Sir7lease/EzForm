@@ -10,8 +10,8 @@ use EzForm\Tags\FieldInterface;
  */
 class FormFields
 {
-    private static int $i = 0;
     private array $fields = [];
+    private static int $i = 0;
 
     /**
      * Add a new field that will be added into the form by the FormBuilder Class
@@ -31,5 +31,14 @@ class FormFields
     public function getFormFields(): array
     {
         return $this->fields;
+    }
+
+    /**
+     * Return the options for the select field
+     * @return string[]
+     */
+    public function getSelectOptions(string $key): array
+    {
+        return $this->fields[$key]->selectOptions;
     }
 }

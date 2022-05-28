@@ -10,11 +10,7 @@ use EzForm\Attributes\FieldAttributes;
  */
 class TextAreaTag extends FieldAttributes implements FieldInterface
 {
-    /** @var string $labelName will contain the label name for each field added through each new instance of this class */
-    public string $labelName;
-
-    /** @var string[] $attributes contains all the attributes that will be added in the form tag */
-    public array $attributes = [];
+    use TagsTrait;
 
     /**
      * @param string $labelName

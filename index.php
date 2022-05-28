@@ -15,6 +15,7 @@
     use EzForm\FormFields;
     use EzForm\Tags\FormTag;
     use EzForm\Tags\InputTag;
+use EzForm\Tags\SelectTag;
 use EzForm\Tags\TextAreaTag;
 
 spl_autoload_register( function ($class) {
@@ -38,10 +39,10 @@ spl_autoload_register( function ($class) {
         $fields = (new FormFields())
             ->addField((new InputTag(labelName: 'Login'))->addAttr(['name'=>'email']))
             ->addField((new InputTag(labelName: 'Password'))->addAttr(['type'=>'password', 'name'=>'pwd']))
-            ->addField((new TextAreaTag('Description')))
+            ->addField((new TextAreaTag(labelName: 'Description')))
             ->addField((new InputTag(labelName: 'Upload products images'))->addAttr(['type'=>'file', 'name'=>'filesProducts[]']))
+            ->addField((new SelectTag(labelName: 'Gender'))->addAttr(['name'=>'gender'])->addOptions(['1'=>'Monsieur','2'=>'Madame']))
             ->addField((new InputTag())->addAttr(['type'=>'submit', 'value'=>'Send']));
-
 
 
         $formBuilder = new FormBuilder($formTag, $fields);
