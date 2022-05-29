@@ -23,35 +23,27 @@ class FormBuilder
     /** @var string $optionsSelect  will contain all the options concatenated into a string */
     private string $optionsSelect = '';
 
-    /**
-     * @param FormTag $formTag
-     * @param FormFields $formFields
-     */
-    public function __construct(
-        private FormTag $formTag,
-        private FormFields $formFields
-    ){}
+    private string $openForm;
+    private string $fields = '';
+
 
     /**
      * The actual function that goes through all the arrays and return the form built.
-     * @return string
+     * @param FormTag $formTag
+     * @param FormFields $formFields
+     * @return self
      */
-    public function buildForm(): string
+    public function buildForm(FormTag $formTag, FormFields $formFields): self
     {
-        echo "<pre>";
-        print_r ( $this->formFields->getFormFields() );
-        echo "</pre>";
-
         $attributesForm='';
-        $fields ='';
 
         // Iterate array that contains all the attributes for the tag <form> and concatenate into a string
-        foreach($this->formTag->getFormTagAttributes() as $name => $value)
+        foreach($formTag->getFormTagAttributes() as $name => $value)
             $attributesForm .= " $name='$value'";
-        $openForm = "<form $attributesForm>";
+        $this->openForm = "<form $attributesForm>";
 
         // Iterate array that contain the list of fields and prepare each one to be build as a field with all the attributes, options...
-        foreach ($this->formFields->getFormFields() as $fieldTagIndex => $attr) {
+        foreach ($formFields->getFormFields() as $fieldTagIndex => $attr) {
             $this->optionsSelect = '';
 
             if(str_contains($fieldTagIndex, 'Fieldset_')){
@@ -70,7 +62,7 @@ class FormBuilder
                     $groupFields .= $this->buildField($this->getKeyField($name));
                 }
 
-                $fields .= <<<FIELDSET
+                $this->fields .= <<<FIELDSET
                     <fieldset>
                         <legend>$fieldTagIndex</legend>
                         $groupFields
@@ -89,11 +81,18 @@ class FormBuilder
                 if(str_contains($this->getKeyField($fieldTagIndex),'SelectTag'))
                     $this->optionsSelect = implode(array_map(fn($valueOptionAttr, $textOptionHTML) => "<option value='$valueOptionAttr'>$textOptionHTML</option>", array_keys($attr->selectOptions), array_values($attr->selectOptions)));
 
-                $fields .= $this->buildField($this->getKeyField($fieldTagIndex));
+                $this->fields .= $this->buildField($this->getKeyField($fieldTagIndex));
             }
         }
-        return $openForm . $fields . "</form>";
+        return $this;
     }
+
+    public function renderForm(): void
+    {
+        echo $this->openForm . $this->fields . "</form>";
+    }
+
+
 
     /**
      * Build a field with its label when needed

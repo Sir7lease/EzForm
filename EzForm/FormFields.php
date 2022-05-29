@@ -30,6 +30,10 @@ class FormFields
         return $this;
     }
 
+    /**
+     * @param string $legend
+     * @return $this
+     */
     public function addFieldset(string $legend): self
     {
         $this->fields["Fieldset_$legend"] = [];
@@ -42,14 +46,5 @@ class FormFields
     public function getFormFields(): array
     {
         return $this->fields;
-    }
-
-    /**
-     * Return the options for the select field
-     * @return string[]
-     */
-    public function getSelectOptions(string $key): array
-    {
-        return $this->fields[$key]->selectOptions;
     }
 }

@@ -10,7 +10,6 @@
         echo "</pre>";
     }
 
-    use EzForm\Form;
     use EzForm\FormBuilder;
     use EzForm\FormFields;
     use EzForm\Tags\FormTag;
@@ -23,8 +22,9 @@ spl_autoload_register( function ($class) {
         require_once $class;
     });
 ?>
-<html>
+<html lang="fr">
 	<head>
+        <title>Form Builder</title>
         <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script-->
 		<style>body{background-color:darkgray;}</style>
 	</head>
@@ -46,11 +46,17 @@ spl_autoload_register( function ($class) {
             ->addField((new SelectTag(labelName: 'Gender'))->addAttr(['name'=>'gender'])->addOptions(['1'=>'Monsieur','2'=>'Madame']), 'Login')
             ->addField((new InputTag())->addAttr(['type'=>'submit', 'value'=>'Send']));
 
-        $formBuilder = new FormBuilder($formTag, $fields);
+        (new FormBuilder())
+            ->buildForm($formTag, $fields)
+            ->renderForm();
 
-        (new Form($formBuilder))->showForm();
-				
-		
+
+
+
+
+
+
+
 
 		
 ?>
