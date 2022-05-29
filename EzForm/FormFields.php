@@ -15,9 +15,6 @@ class FormFields
 
     /**
      * Add a new field that will be added into the form by the FormBuilder Class
-     * @param FieldInterface $field
-     * @param string $fieldsetTarget default empty string
-     * @return $this
      */
     public function addField(FieldInterface $field, string $fieldsetTarget=''): self
     {
@@ -30,19 +27,12 @@ class FormFields
         return $this;
     }
 
-    /**
-     * @param string $legend
-     * @return $this
-     */
     public function addFieldset(string $legend): self
     {
         $this->fields["Fieldset_$legend"] = [];
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getFormFields(): array
     {
         return $this->fields;

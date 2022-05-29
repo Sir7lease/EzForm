@@ -15,11 +15,6 @@ class SelectTag extends FieldAttributes implements FieldInterface
     /** @var string[] $selectOptions contains the options list for the select field */
     public array $selectOptions = [];
 
-    /**
-     * @param string $labelName
-     * @param string $id
-     * @param string $name
-     */
     public function __construct(string $labelName='', string $id='id_', string $name='field_')
     {
         $this->labelName = $labelName;
@@ -32,10 +27,6 @@ class SelectTag extends FieldAttributes implements FieldInterface
         ];
     }
 
-    /**
-     * @param array $options
-     * @return self $this
-     */
     public function addOptions(array $options): self
     {
         $this->selectOptions = $options;

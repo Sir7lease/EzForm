@@ -16,10 +16,6 @@ abstract class FieldAttributes implements FieldInterface
     /** @var int $index incremented each time that the function addField() is called */
     public static int $index = 0;
 
-    /**
-     * @param array $attributes
-     * @return self $this
-     */
     public function addAttr(array $attributes=[]): self
     {
         foreach($attributes as $key => $value)

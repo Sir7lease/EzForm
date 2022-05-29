@@ -12,12 +12,6 @@ class InputTag extends FieldAttributes implements FieldInterface
 {
     use TagsTrait;
 
-    /**
-     * @param string $id
-     * @param string $labelName
-     * @param string $type
-     * @param string $name
-     */
     public function __construct(string $labelName='', string $id='id_', string $type='text', string $name='field_')
     {
         $this->labelName = $labelName;

@@ -12,11 +12,6 @@ class TextAreaTag extends FieldAttributes implements FieldInterface
 {
     use TagsTrait;
 
-    /**
-     * @param string $labelName
-     * @param string $id
-     * @param string $name
-     */
     public function __construct(string $labelName='', string $id='id_', string $name='field_')
     {
         $this->labelName = $labelName;

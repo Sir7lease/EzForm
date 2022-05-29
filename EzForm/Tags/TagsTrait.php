@@ -3,7 +3,7 @@ namespace EzForm\Tags;
 
 /**
  * This Trait is shared by all the Tags Fields and FieldAttributes abstract class.
- * It'll overwrite the values (if needed) of the $attributes array that is set in the constructor
+ * It'll allow you to overwrite the values (if needed) of the $attributes array that is set in the constructor
  * of each <Field Tag> class.
  *
  * @author  Hammoumi Abdelaziz

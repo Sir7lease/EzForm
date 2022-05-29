@@ -14,24 +14,23 @@ class FormBuilder
 {
     use TagsTrait;
 
+    /** @var string $openForm will contain the <form> tag with its attributes */
+    private string $openForm;
+
     /** @var string $labelFor will contain the value of the attributes 'for' of the label */
     private string $labelFor;
 
-    /** @var string $attributesField will contain all the attributes concatenated into a string */
-    private string $attributesField;
-
-    /** @var string $optionsSelect  will contain all the options concatenated into a string */
-    private string $optionsSelect = '';
-
-    private string $openForm;
+    /** @var string $fields will contain all the fields of the form */
     private string $fields = '';
 
+    /** @var string $attributesField will contain all the attributes concatenated of a field */
+    private string $attributesField;
+
+    /** @var string $optionsSelect  will contain all the options concatenated for the <select> */
+    private string $optionsSelect = '';
 
     /**
      * The actual function that goes through all the arrays and return the form built.
-     * @param FormTag $formTag
-     * @param FormFields $formFields
-     * @return self
      */
     public function buildForm(FormTag $formTag, FormFields $formFields): self
     {
@@ -46,8 +45,9 @@ class FormBuilder
         foreach ($formFields->getFormFields() as $fieldTagIndex => $attr) {
             $this->optionsSelect = '';
 
+            // Check if a <fieldset> is added.
             if(str_contains($fieldTagIndex, 'Fieldset_')){
-
+                // If true then all the fields inside the fieldset array will be added inside the <fieldset> tag
                 $groupFields = '';
                 foreach ($attr as $name => $value) {
                     $attributesField = array_map(fn($attrTag, $attrVal) => "$attrTag=$attrVal", array_keys($value->getAttributes()), array_values($value->getAttributes()));
@@ -96,8 +96,6 @@ class FormBuilder
 
     /**
      * Build a field with its label when needed
-     * @param string $fieldTag
-     * @return string
      */
     private function buildField(string $fieldTag): string
     {
@@ -125,8 +123,6 @@ class FormBuilder
 
     /**
      * Getting the class name used to create the field
-     * @param string $fieldKey
-     * @return string
      */
     private function getKeyField(string $fieldKey): string
     {

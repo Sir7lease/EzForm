@@ -51,14 +51,6 @@ spl_autoload_register( function ($class) {
             ->renderForm();
 
 
-
-
-
-
-
-
-
-		
 ?>
 	</body>
 </html>

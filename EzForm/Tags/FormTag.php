@@ -21,9 +21,6 @@ class FormTag extends FieldAttributes
 		];
 	}
 
-    /**
-     * @return array
-     */
 	public function getFormTagAttributes(): array
 	{
 		return $this->attributes;
