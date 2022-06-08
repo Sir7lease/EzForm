@@ -13,11 +13,6 @@
         private string $labelName = 'totoTata';
         private string $attrFor = 'id_tmp';
 
-        public function __construct()
-        {
-            //$this->attrFor = $t;
-        }
-
         public function getLabel()
         {
             return $this->labelName;
