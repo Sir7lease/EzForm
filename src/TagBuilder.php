@@ -8,11 +8,8 @@
      *
      * @author  Hammoumi Abdelaziz
      */
-    abstract class TagBuilder
+    abstract class TagBuilder implements FieldInterface
     {
-
-        private int $poil = 0;
-
         protected array|string $wrapTags;
 
         public function __construct(array $wrapTags=[])
@@ -25,7 +22,12 @@
             return "<form {$this->concatAttributesField($attr)}>";
         }
 
-
+        /**
+         * Build a field with a label (if requested) and wrap label, field and/or label+field with tags (div, span, p...)
+         * @param string $classNameField
+         * @param FieldInterface $objectField
+         * @return string field ready to be added to the <form>
+         */
         protected function buildFieldTag(string $classNameField, FieldInterface $objectField): string
         {
             if (str_contains($classNameField, 'InputTag'))
@@ -38,7 +40,8 @@
             if(array_key_exists('f', $this->wrapTags))
                 $fieldTag = $this->addWrap($fieldTag, $this->wrapTags['f']);
 
-            $labelTag = (array_key_exists('l', $this->wrapTags)) ? $this->addWrap($this->isLabelWanted($objectField), $this->wrapTags['l']) : $this->isLabelWanted($objectField);
+            $labelTag = (array_key_exists('l', $this->wrapTags)) ?
+              $this->addWrap($this->isLabelWanted($objectField), $this->wrapTags['l']) : $this->isLabelWanted($objectField);
 
             if(array_key_exists('fl', $this->wrapTags))
                 $labelField = $this->addWrap($labelTag . $fieldTag, $this->wrapTags['fl']);
@@ -46,7 +49,7 @@
             return $labelField;
         }
 
-
+        
         protected function buildFieldsetTag(string $nameFielset, array $fieldset): string
         {
             $fieldsetFields = '';
@@ -60,12 +63,9 @@
             FIELDSET;
         }
 
-
-
-
         private function concatAttributesField(array $attr): string
         {
-            return implode(' ', array_map(fn($attrKey, $attrVal) => (is_numeric($attrKey))?$attrVal:"$attrKey='$attrVal'", array_keys($attr), array_values($attr)));
+            return implode(' ', array_map(fn($attrKey, $attrVal) => (is_numeric($attrKey)) ? $attrVal : "$attrKey='$attrVal'", array_keys($attr), array_values($attr)));
         }
 
         private function buildOptionsSelect(array $options): string
@@ -88,7 +88,7 @@
          */
         private function splitStringByUnderscore(string $fieldKey, bool $className=true): string
         {
-            return explode('_', $fieldKey)[($className)?0:1];
+            return explode('_', $fieldKey)[($className) ? 0 : 1];
         }
 
         private function isLabelWanted(FieldInterface $objectField): null|string
@@ -103,10 +103,10 @@
         {
             if(!is_array($tags))
                 $tags = array_reverse(explode(',', str_replace(' ', '', $tags)));
-            foreach($tags as $tag){
+
+            foreach($tags as $tag)
                 $fieldTag = "<$tag>$fieldTag</$tag>";
-            }
+
             return $fieldTag;
         }
-
     }
