@@ -1,7 +1,7 @@
 <?php
-namespace EzForm\Tags;
+namespace src\Tags;
 
-use EzForm\Attributes\FieldAttributes;
+use src\Attributes\FieldAttributes;
 
 /**
  * This Class allows you to add textarea field in you form
@@ -14,10 +14,16 @@ class TextAreaTag extends FieldAttributes implements FieldInterface
 
     public function __construct(string $labelName='', string $id='id_', string $name='field_')
     {
-        $this->labelName = $labelName;
+        self::$index++;
+
         $this->attributes = [
-            'id'   => $id . self::$index++,
-            'name' => $name . self::$index++,
+            'id'   => $id . self::$index,
+            'name' => $name . self::$index,
         ];
+
+        if(!empty($labelName))
+            $this->labelName = $labelName;
+        else
+            $this->attributes['placeholder'] = 'Type_Something_Here';
     }
 }

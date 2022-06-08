@@ -1,8 +1,8 @@
 <?php
-namespace EzForm\Attributes;
+namespace src\Attributes;
 
-use EzForm\Tags\FieldInterface;
-use EzForm\Tags\TagsTrait;
+use src\Tags\FieldInterface;
+use src\Tags\TagsTrait;
 
 /**
  * Abstract class that share the function addAttr with all the class tag

@@ -1,5 +1,5 @@
 <?php
-namespace EzForm\Tags;
+namespace src\Tags;
 
 interface FieldInterface
 {

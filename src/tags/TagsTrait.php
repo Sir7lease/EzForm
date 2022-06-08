@@ -1,5 +1,5 @@
 <?php
-namespace EzForm\Tags;
+namespace src\Tags;
 
 /**
  * This Trait is shared by all the Tags Fields and FieldAttributes abstract class.
@@ -24,6 +24,16 @@ trait TagsTrait
     public function getAttributes(): array
     {
         return $this->attributes;
+    }
+
+    public function getId()
+    {
+        return $this->getAttributes()['id'];
+    }
+
+    public function hasLabelName(): bool
+    {
+        return (isset($this->labelName) && !empty($this->labelName)) ? true : false;
     }
 
 }
