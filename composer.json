@@ -1,11 +1,11 @@
 {
-    "name": "aha/ez-form",
+    "name": "ezform/ez-form",
     "description": "The library to create form in the most easiest way with the a lot of features",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Aha\\EzForm\\": "src/"
+            "Ezform\\EzForm\\": "src/"
         }
     },
     "authors": [
