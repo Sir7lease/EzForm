@@ -1,16 +1,16 @@
 {
     "name": "aha/ez-form",
-    "description": "This library allow you to build <form> in the most easiest way. With a lot of features (save form for re-use, adding css, wrap field with tags...)",
+    "description": "The library to create form in the most easiest way with the a lot of features",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Aha\\EzForm\\src\\": "Aha/"
+            "Aha\\EzForm\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "hammoumi abdalaziz",
+            "name": "Sir7lease github",
             "email": "hammoumi.abdalaziz@gmail.com"
         }
     ],
