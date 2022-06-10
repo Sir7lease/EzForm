@@ -1,5 +1,8 @@
 <?php
-   ini_set('display_errors', 1);
+
+    use src\Form;
+
+    ini_set('display_errors', 1);
    ini_set('display_startup_errors', 1);
    error_reporting(E_ALL);
 
@@ -10,18 +13,6 @@
       echo "</pre>";
    }
 
-   use src\Form;
-   use src\FormBuilder;
-   use src\FormFields;
-   use src\Tags\FormTag;
-   use src\Tags\InputTag;
-   use src\Tags\SelectTag;
-   use src\Tags\TextAreaTag;
-
-   spl_autoload_register( function ($class) {
-      $class = str_replace('\\','/',$class) .'.php';
-      require_once $class;
-   });
 ?>
 
 <html lang="fr">

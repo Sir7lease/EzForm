@@ -1,5 +1,5 @@
 <?php
-namespace src\Tags;
+namespace App\Tags;
 
 interface FieldInterface
 {
