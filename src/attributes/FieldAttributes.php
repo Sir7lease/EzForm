@@ -1,8 +1,8 @@
 <?php
-namespace src\Attributes;
+namespace App\Attributes;
 
-use src\Tags\FieldInterface;
-use src\Tags\TagsTrait;
+use App\Tags\FieldInterface;
+use App\Tags\TagsTrait;
 
 /**
  * Abstract class that share the function addAttr with all the class tag

@@ -1,7 +1,7 @@
 <?php
-namespace src\Tags;
+namespace App\Tags;
 
-use src\Attributes\FieldAttributes;
+use App\Attributes\FieldAttributes;
 
 /**
  * This Class allows you to add input field in you form

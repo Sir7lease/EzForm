@@ -1,8 +1,8 @@
 <?php
-namespace src;
+namespace App;
 
-use src\TagBuilder;
-use src\Tags\TagsTrait;
+use App\TagBuilder;
+use App\Tags\TagsTrait;
 
 /**
  * This Class will build the form with the form tag and all the fields created

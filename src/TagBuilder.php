@@ -1,7 +1,7 @@
 <?php
-    namespace src;
+    namespace App;
 
-    use src\Tags\FieldInterface;
+    use App\Tags\FieldInterface;
 
     /**
      * This Class Build a Field with all the attributes

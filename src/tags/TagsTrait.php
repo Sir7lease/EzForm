@@ -1,5 +1,5 @@
 <?php
-namespace src\Tags;
+namespace App\Tags;
 
 /**
  * This Trait is shared by all the Tags Fields and FieldAttributes abstract class.

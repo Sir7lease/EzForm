@@ -1,10 +1,10 @@
 <?php
 
-namespace src;
+namespace App;
 
-use src\Attributes\FieldAttributes;
-use src\Tags\FieldInterface;
-use src\Tags\TagsTrait;
+use App\Attributes\FieldAttributes;
+use App\Tags\FieldInterface;
+use App\Tags\TagsTrait;
 
 final class Form
 {
