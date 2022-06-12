@@ -1,20 +1,18 @@
 {
-    "name": "ezform/ez-form",
-    "description": "The library that make form in the most easiest way",
+    "name": "sirplease/ez-form",
+    "description": "The library to help you to make form in the most easiest way with the most flexibility",
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "EzForm\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Hammoumi Abdelaziz",
             "email": "hammoumi.abdalaziz@gmail.com"
         }
     ],
-    "require": {
-        "php": ">=8.1"
-    }
+    "autoload": {
+        "psr-4": {
+            "sirplease\\ez-form\\": "src/"
+        }
+    },
+    "require": {}
 }
