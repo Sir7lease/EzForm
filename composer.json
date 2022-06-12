@@ -1,16 +1,16 @@
 {
     "name": "ezform/ez-form",
-    "description": "The library to create form in the most easiest way with the a lot of features",
+    "description": "The library that make form in the most easiest way",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "EzForm\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Sir7lease github",
+            "name": "Hammoumi Abdelaziz",
             "email": "hammoumi.abdalaziz@gmail.com"
         }
     ],
