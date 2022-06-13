@@ -4,13 +4,23 @@
     <list default="true" id="a8001c09-3a08-441d-8e63-af70badcf2eb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FormBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/FormBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TagBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/attributes/FieldAttributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/attributes/FieldAttributes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tags/FieldInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/FieldInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tags/InputTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/InputTag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tags/LabelTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/LabelTag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tags/SelectTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/SelectTag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tags/TagsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/TagsTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tags/TextAreaTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/TextAreaTag.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -20,20 +30,22 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="xDebug" />
   <component name="ProjectId" id="2AUeUm9CyHlel733P8yzaVQP6Li" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,7 +55,8 @@
       <option name="presentableId" value="Default" />
       <updated>1655068608669</updated>
       <workItem from="1655068609790" duration="621000" />
-      <workItem from="1655077038137" duration="424000" />
+      <workItem from="1655077038137" duration="638000" />
+      <workItem from="1655078007306" duration="1171000" />
     </task>
     <servers />
   </component>

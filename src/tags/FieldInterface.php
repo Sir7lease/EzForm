@@ -1,5 +1,5 @@
 <?php
-namespace App\Tags;
+namespace Aham\EzForm\Tags;
 
 interface FieldInterface
 {

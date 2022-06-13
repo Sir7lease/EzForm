@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace Aham\EzForm;
 
-use App\Tags\FieldInterface;
+use Aham\EzForm\Tags\FieldInterface;
 
 final class Form
 {

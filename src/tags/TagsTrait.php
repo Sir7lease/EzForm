@@ -1,5 +1,5 @@
 <?php
-namespace App\Tags;
+namespace Aham\EzForm\Tags;
 
 /**
  * This Trait is shared by all the Tags Fields and FieldAttributes abstract class.

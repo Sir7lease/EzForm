@@ -1,18 +1,33 @@
 {
-    "name": "sirplease/ez-form",
-    "description": "The library to help you to make form in the most easiest way with the most flexibility",
+    "name": "aham/ez-form",
+    "description": "The library to help you making form in the most easiest way",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
+            "role": "Author",
             "name": "Hammoumi Abdelaziz",
             "email": "hammoumi.abdalaziz@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "sirplease\\ez-form\\": "src/"
+            "Aham\\EzForm\\": "src/"
         }
     },
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "Aham\\EzForm\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "preferred-install": "dist"
+    }
 }

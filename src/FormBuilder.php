@@ -1,7 +1,7 @@
 <?php
-namespace App;
+namespace Aham\EzForm;
 
-use App\Tags\TagsTrait;
+use Aham\EzForm\Tags\TagsTrait;
 
 /**
  * This Class will build the form with the form tag and all the fields created

@@ -1,7 +1,7 @@
 <?php
-namespace App\Tags;
+namespace Aham\EzForm\Tags;
 
-use App\Attributes\FieldAttributes;
+use Aham\EzForm\Attributes\FieldAttributes;
 
 /**
  * This Class allows you to add input field in you form
