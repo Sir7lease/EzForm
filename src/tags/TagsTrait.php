@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Aham\EzForm\Tags;
 
 /**
@@ -26,7 +28,7 @@ trait TagsTrait
         return $this->attributes;
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->getAttributes()['id'];
     }

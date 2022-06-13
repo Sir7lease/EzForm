@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Aham\EzForm;
 
 use Aham\EzForm\Tags\FieldInterface;
@@ -43,8 +45,7 @@ abstract class TagBuilder implements FieldInterface
         $labelTag = (array_key_exists('l', $this->wrapTags)) ?
           $this->addWrap($this->isLabelWanted($objectField), $this->wrapTags['l']) : $this->isLabelWanted($objectField);
 
-        if(array_key_exists('fl', $this->wrapTags))
-            $labelField = $this->addWrap($labelTag . $fieldTag, $this->wrapTags['fl']);
+        $labelField = (array_key_exists('fl', $this->wrapTags)) ? $this->addWrap($labelTag . $fieldTag, $this->wrapTags['fl']) : $labelTag . $fieldTag;
 
         return $labelField;
     }

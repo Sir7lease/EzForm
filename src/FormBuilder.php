@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Aham\EzForm;
 
 use Aham\EzForm\Tags\TagsTrait;

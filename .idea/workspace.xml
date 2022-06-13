@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8001c09-3a08-441d-8e63-af70badcf2eb" name="Changes" comment="">
+    <list default="true" id="12f40760-105f-4c0b-90ac-b20b12e63155" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/FormBuilderTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/FormTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/tags/InputTagTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FormBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/FormBuilder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TagBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagBuilder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/attributes/FieldAttributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/attributes/FieldAttributes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tags/FieldInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/FieldInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tags/InputTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/InputTag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tags/LabelTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/LabelTag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tags/SelectTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/SelectTag.php" afterDir="false" />
@@ -30,8 +34,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="xDebug" />
-  <component name="ProjectId" id="2AUeUm9CyHlel733P8yzaVQP6Li" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1" />
+  <component name="ProjectId" id="2AKQkxYpvdn5QnBZrJ4046gkn14" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,22 +46,60 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/myproject/EzForm/vendor/phpunit/phpunit/phpunit",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "settings.editor.selected.configurable": "php.test.frameworks.configurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager" selected="PHPUnit.InputTagTest">
+    <configuration name="FormBuilderTest.testBuildFormReturnInstanceOfFormBuilder" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Aham\EzForm\Tests\FormBuilderTest" file="$PROJECT_DIR$/tests/FormBuilderTest.php" method="testBuildFormReturnInstanceOfFormBuilder" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="InputTagTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="tags\InputTagTest" file="$PROJECT_DIR$/tests/tags/InputTagTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="InputTagTest.testGetLabelNameReturnString" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="tags\InputTagTest" file="$PROJECT_DIR$/tests/tags/InputTagTest.php" method="testGetLabelNameReturnString" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="InputTagTest.testHasLabelNameReturnStringForInputTag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="tags\InputTagTest" file="$PROJECT_DIR$/tests/tags/InputTagTest.php" method="testHasLabelNameReturnStringForInputTag" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="InputTagTest.testHasLabelNameReturnStringForSelectTag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="tags\InputTagTest" file="$PROJECT_DIR$/tests/tags/InputTagTest.php" method="testHasLabelNameReturnStringForSelectTag" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="localhost" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$" port="8000">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.InputTagTest" />
+        <item itemvalue="PHPUnit.InputTagTest.testHasLabelNameReturnStringForSelectTag" />
+        <item itemvalue="PHPUnit.InputTagTest.testHasLabelNameReturnStringForInputTag" />
+        <item itemvalue="PHPUnit.InputTagTest.testGetLabelNameReturnString" />
+        <item itemvalue="PHPUnit.FormBuilderTest.testBuildFormReturnInstanceOfFormBuilder" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a8001c09-3a08-441d-8e63-af70badcf2eb" name="Changes" comment="" />
-      <created>1655068608669</created>
+      <changelist id="12f40760-105f-4c0b-90ac-b20b12e63155" name="Changes" comment="" />
+      <created>1654755943843</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1655068608669</updated>
-      <workItem from="1655068609790" duration="621000" />
-      <workItem from="1655077038137" duration="638000" />
-      <workItem from="1655078007306" duration="1171000" />
+      <updated>1654755943843</updated>
+      <workItem from="1654755945036" duration="10492000" />
+      <workItem from="1654842050417" duration="330000" />
+      <workItem from="1654844407393" duration="3092000" />
+      <workItem from="1654852161927" duration="1602000" />
+      <workItem from="1654854055887" duration="6486000" />
+      <workItem from="1655102427307" duration="10063000" />
     </task>
     <servers />
   </component>
