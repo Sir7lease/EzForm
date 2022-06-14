@@ -13,12 +13,15 @@ final class Form
 
     private static int $index = 0;
 
-    public function __construct()
+    public function __construct(array $attr=[])
     {
-        $this->formTagAttributes = [
-          'action' => '',
-          'method' => 'GET',
-        ];
+        if(count($attr)>0)
+            $this->formTagAttributes = $attr;
+        else
+            $this->formTagAttributes = [
+              'action' => '',
+              'method' => 'GET',
+            ];
     }
 
     /**
