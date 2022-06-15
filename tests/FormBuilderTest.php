@@ -19,9 +19,4 @@ class FormBuilderTest extends TestCase
           (new FormBuilder([]))->buildForm($form)
         );
     }
-
-    public function testRenderFormOutput()
-    {
-        $this->expectOutputString((new FormBuilder([]))->buildForm($form)->renderForm());
-    }
 }
