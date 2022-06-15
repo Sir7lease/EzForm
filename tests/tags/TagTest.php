@@ -8,7 +8,7 @@ use Aham\EzForm\Tags\SelectTag;
 use Aham\EzForm\Tags\TextAreaTag;
 use PHPUnit\Framework\TestCase;
 
-class InputTagTest extends TestCase
+class TagTest extends TestCase
 {
     public function testGetLabelNameReturnStringForInputTag()
     {
@@ -30,19 +30,19 @@ class InputTagTest extends TestCase
 
 
 
-    public function testGetAttributesReturnStringForInputTag()
+    public function testGetAttributesReturnArrayForInputTag()
     {
         $input = (new InputTag());
         $this->assertIsArray( $input->getAttributes() );
     }
 
-    public function testGetAttributesReturnStringForSelectTag()
+    public function testGetAttributesReturnArrayForSelectTag()
     {
         $select = (new SelectTag());
         $this->assertIsArray( $select->getAttributes() );
     }
 
-    public function testGetAttributesReturnStringForTextAreaTag()
+    public function testGetAttributesReturnArrayForTextAreaTag()
     {
         $textarea = (new TextAreaTag());
         $this->assertIsArray( $textarea->getAttributes() );
@@ -71,19 +71,19 @@ class InputTagTest extends TestCase
 
 
 
-    public function testHasLabelNameReturnStringForInputTag()
+    public function testHasLabelNameReturnBooleanForInputTag()
     {
         $input = (new InputTag());
         $this->assertIsBool( $input->hasLabelName() );
     }
 
-    public function testHasLabelNameReturnStringForSelectTag()
+    public function testHasLabelNameReturnBooleanForSelectTag()
     {
         $select = (new SelectTag());
         $this->assertIsBool( $select->hasLabelName() );
     }
 
-    public function testHasLabelNameReturnStringForTextAreaTag()
+    public function testHasLabelNameReturnBooleanForTextAreaTag()
     {
         $textarea = (new TextAreaTag());
         $this->assertIsBool( $textarea->hasLabelName() );
