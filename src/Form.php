@@ -22,7 +22,6 @@ final class Form
         if(count($attr) > 0)
             foreach($attr as $key => $value)
                 $this->formTagAttributes[$key] = $value;
-
     }
 
     /**

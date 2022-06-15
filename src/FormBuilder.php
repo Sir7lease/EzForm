@@ -21,7 +21,7 @@ class FormBuilder extends TagBuilder
     /** @var string $fields will contain all the fields of the form */
     private string $fields = '';
 
-    public function __construct(array $wrap)
+    public function __construct(array $wrap=[])
     {
         parent::__construct($wrap);
     }

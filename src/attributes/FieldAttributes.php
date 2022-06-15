@@ -25,4 +25,5 @@ abstract class FieldAttributes implements FieldInterface
 
         return $this;
     }
+
 }

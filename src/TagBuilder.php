@@ -14,9 +14,15 @@ abstract class TagBuilder implements FieldInterface
 {
     protected array|string $wrapTags;
 
+    private string $labelTag;
+    private string $fieldTag;
+    private array|string $singleFieldWrap;
+    private array|string $globalFieldWrap;
+
+
     public function __construct(array $wrapTags=[])
     {
-        $this->wrapTags = $wrapTags;
+        $this->globalFieldWrap = $wrapTags;
     }
 
     protected function buildFormTag(array $attr): string
@@ -32,22 +38,29 @@ abstract class TagBuilder implements FieldInterface
      */
     protected function buildFieldTag(string $classNameField, FieldInterface $objectField): string
     {
-        if (str_contains($classNameField, 'InputTag'))
-            $fieldTag = "<input {$this->concatAttributesField($objectField->getAttributes())} />";
-        elseif (str_contains($classNameField, 'TextAreaTag'))
-            $fieldTag = "<textarea {$this->concatAttributesField($objectField->getAttributes())} ></textarea>";
-        elseif (str_contains($classNameField, 'SelectTag'))
-            $fieldTag = "<select {$this->concatAttributesField($objectField->getAttributes())} > {$this->buildOptionsSelect($objectField->selectOptions)} </select>";
+        $this->singleFieldWrap = $objectField->getWrap();
 
-        if(array_key_exists('f', $this->wrapTags))
+        $this->labelTag = ($this->isLabelWanted($objectField))??'';
+
+        if (str_contains($classNameField, 'InputTag'))
+            $this->fieldTag = "<input {$this->concatAttributesField($objectField->getAttributes())} />";
+        elseif (str_contains($classNameField, 'TextAreaTag'))
+            $this->fieldTag = "<textarea {$this->concatAttributesField($objectField->getAttributes())} ></textarea>";
+        elseif (str_contains($classNameField, 'SelectTag'))
+            $this->fieldTag = "<select {$this->concatAttributesField($objectField->getAttributes())} > {$this->buildOptionsSelect($objectField->selectOptions)} </select>";
+
+
+
+
+        /*if( isset( $this->wrapTags ) && array_key_exists('f', $this->wrapTags ) )
             $fieldTag = $this->addWrap($fieldTag, $this->wrapTags['f']);
 
-        $labelTag = (array_key_exists('l', $this->wrapTags)) ?
+        $labelTag = (isset($this->wrapTags) && array_key_exists('l', $this->wrapTags)) ?
           $this->addWrap($this->isLabelWanted($objectField), $this->wrapTags['l']) : $this->isLabelWanted($objectField);
 
-        $labelField = (array_key_exists('fl', $this->wrapTags)) ? $this->addWrap($labelTag . $fieldTag, $this->wrapTags['fl']) : $labelTag . $fieldTag;
+        $labelField = (isset($this->wrapTags) && array_key_exists('fl', $this->wrapTags)) ? $this->addWrap($labelTag . $fieldTag, $this->wrapTags['fl']) : $labelTag . $fieldTag;*/
 
-        return $labelField;
+        return $this->addWrap();
     }
 
 
@@ -92,6 +105,7 @@ abstract class TagBuilder implements FieldInterface
         return explode('_', $fieldKey)[($className) ? 0 : 1];
     }
 
+
     private function isLabelWanted(FieldInterface $objectField): null|string
     {
         if($objectField->hasLabelName()){
@@ -100,14 +114,79 @@ abstract class TagBuilder implements FieldInterface
         return null;
     }
 
-    private function addWrap($fieldTag, array|string $tags): string
+
+    private function addWrap(): string
     {
-        if(!is_array($tags))
-            $tags = array_reverse(explode(',', str_replace(' ', '', $tags)));
+        $singleWrap = [];
+        $globalWrap = [];
 
-        foreach($tags as $tag)
-            $fieldTag = "<$tag>$fieldTag</$tag>";
+        if ($this->labelTag) {
+            // Label Wrap (first Single then Global)
+            if (isset($this->singleFieldWrap) && array_key_exists('l', $this->singleFieldWrap))
+                if (!is_array($this->singleFieldWrap['l']))
+                    $singleWrap = array_reverse(explode(',', str_replace(' ', '', $this->singleFieldWrap['l'])));
+                foreach ($singleWrap as $tag)
+                    $this->labelTag = "<$tag>$this->labelTag</$tag>";
 
-        return $fieldTag;
+            if (isset($this->globalFieldWrap) && array_key_exists('l', $this->globalFieldWrap))
+                if (!is_array($this->globalFieldWrap['l']))
+                    $globalWrap = array_reverse(explode(',', str_replace(' ', '', $this->globalFieldWrap['l'])));
+                foreach ($globalWrap as $tag)
+                    $this->labelTag = "<$tag>$this->labelTag</$tag>";
+        }
+
+        $singleWrap = [];
+        $globalWrap = [];
+        // Field Wrap (first Single then Global)
+        if(isset($this->singleFieldWrap) && array_key_exists('f', $this->singleFieldWrap))
+            if(!is_array($this->singleFieldWrap['f']))
+                $singleWrap = array_reverse(explode(',', str_replace(' ', '', $this->singleFieldWrap['f'])));
+            foreach($singleWrap as $tag)
+                $this->fieldTag = "<$tag>$this->fieldTag</$tag>";
+
+        if(isset($this->globalFieldWrap) && array_key_exists('f', $this->globalFieldWrap))
+            if(!is_array($this->globalFieldWrap['f']))
+                $globalWrap = array_reverse(explode(',', str_replace(' ', '', $this->globalFieldWrap['f'])));
+            foreach($globalWrap as $tag)
+                $this->fieldTag = "<$tag>$this->fieldTag</$tag>";
+
+        $singleWrap = [];
+        $globalWrap = [];
+        // Label & Field Wrap (first Single then Global)
+        $labelField = $this->labelTag . $this->fieldTag;
+        if(isset($this->singleFieldWrap) && array_key_exists('lf', $this->singleFieldWrap))
+            if(!is_array($this->singleFieldWrap['lf']))
+                $singleWrap = array_reverse(explode(',', str_replace(' ', '', $this->singleFieldWrap['lf'])));
+            foreach($singleWrap as $tag)
+                $labelField = "<$tag>$labelField</$tag>";
+
+        if(isset($this->globalFieldWrap) && array_key_exists('lf', $this->globalFieldWrap))
+            if(!is_array($this->globalFieldWrap['lf']))
+                $globalWrap = array_reverse(explode(',', str_replace(' ', '', $this->globalFieldWrap['lf'])));
+            foreach($globalWrap as $tag)
+                $labelField = "<$tag>$labelField</$tag>";
+
+
+        return $labelField;
     }
+
+
+
+
+    private function applyWrap(bool $wrapSingle, bool $wrapGlobal)
+    {
+        $singleWrap = [];
+        $globalWrap = [];
+        if ( $wrapSingle ) {
+            if( $wrapSingle!=='l' || ( $wrapSingle==='l' && !$this->labelTag ) ){}
+
+        }
+    }
+
+
+
+
+
+
+
 }
