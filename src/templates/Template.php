@@ -7,7 +7,7 @@ use function PHPUnit\Framework\isInstanceOf;
 
 class Template extends FormBuilder
 {
-    private const TEMPLATES_JSON_FILE_PATH = './src/templates/template.json';
+    private const TEMPLATES_JSON_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'template.json';
     private $contentFile = [];
     private string|Form $template;
 
