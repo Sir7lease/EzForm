@@ -2,23 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6538b965-854d-40b1-b14c-86ae22335508" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FormBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/FormBuilder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TagBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/attributes/FieldAttributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/attributes/FieldAttributes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tags/TagsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/TagsTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/Template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/template.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/template.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -28,7 +22,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="xDebug">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -74,7 +68,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
   }
@@ -94,10 +91,22 @@
       <updated>1655272536928</updated>
       <workItem from="1655272538138" duration="15516000" />
       <workItem from="1655295149725" duration="1894000" />
+      <workItem from="1655336737106" duration="8196000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

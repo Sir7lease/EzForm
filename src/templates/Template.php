@@ -6,6 +6,7 @@ use Aham\EzForm\FormBuilder;
 
 class Template extends FormBuilder
 {
+    private const MSG_NO_TEMPLATE = 'There is no template saved yet.';
     private const TEMPLATES_JSON_FILE_PATH = './src/templates/template.json';
     private $contentFile = [];
 
@@ -17,19 +18,24 @@ class Template extends FormBuilder
     public function getListTemplates(): string
     {
          if( !$this->contentFile )
-             return 'There is no template saved yet.';
+             return self::MSG_NO_TEMPLATE;
 
          return implode( '<br/>', array_keys( $this->contentFile ) ) . '<br/><br/>';
     }
 
-    public function getTemplate(string $nameTemplate): Form
+    public function getTemplate(string $nameTemplate): string|Form
     {
+        if( !$this->contentFile )
+            return self::MSG_NO_TEMPLATE;
+
         $this->getContent();
         return unserialize( $this->contentFile[ $nameTemplate ] );
     }
 
-    public function renderTemplate(string $nameTemplate)
+    public function renderTemplate(string $nameTemplate): ?string
     {
+        if( !$this->contentFile )
+            return self::MSG_NO_TEMPLATE;
         echo $this->buildForm($this->getTemplate($nameTemplate))->renderForm();
     }
 
