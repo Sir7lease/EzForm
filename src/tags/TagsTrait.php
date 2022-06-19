@@ -39,5 +39,4 @@ trait TagsTrait
     {
         return (isset($this->labelName) && !empty($this->labelName))?? false;
     }
-
 }

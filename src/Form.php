@@ -35,6 +35,27 @@ final class Form
         return $this;
     }
 
+    public function getField(string $nameField)
+    {
+        foreach($this->fields as $kf => $vf){
+            if(str_contains($kf, 'Fieldset_')){
+                echo "<pre>";
+                print_r( $this->getFields()[$kf]->getFieldset() );
+                echo "</pre>";
+                foreach($vf->getFieldset() as $kff => $vff){
+                   if($kff===$nameField) {
+                       unset($this->getFields()[$kf]->getFieldset()[$nameField]);
+                    }
+                }
+                echo "<pre>";
+                print_r( $this->getFields()[$kf]->getFieldset() );
+                echo "</pre>";
+            }elseif($kf===$nameField){
+                unset($this->fields[$kf]);
+            }
+        };
+    }
+
     /**
      * @param string $legend
      * @param FieldInterface[] $fields
@@ -52,12 +73,17 @@ final class Form
         return $this;
     }
 
+    public function removeFieldset()
+    {
+
+    }
+
     public function getFormTagAttributes(): array
     {
         return $this->formTagAttributes;
     }
 
-    public function getFormFields(): array
+    public function getFields(): array
     {
         return $this->fields;
     }

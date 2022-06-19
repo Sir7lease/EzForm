@@ -32,7 +32,7 @@ class FormBuilder extends TagBuilder
         $this->openForm = $this->buildFormTag($form->getFormTagAttributes());
 
         // Build field
-        foreach ($form->getFormFields() as $fieldTagIndex => $fieldObject)
+        foreach ($form->getFields() as $fieldTagIndex => $fieldObject)
             $this->fields .= (str_contains($fieldTagIndex, 'Fieldset')) ?
               $this->buildFieldsetTag($fieldTagIndex, $fieldObject) : $this->buildFieldTag($fieldTagIndex, $fieldObject);
 

@@ -21,18 +21,22 @@ $form->addFieldset('User Connection', [
         (new InputTag('Password', ['type'=>'password', 'name'=>'password'], ['l'=>'div','lf'=>'div']))
         ])
     ->addField((new TextAreaTag(attributes: ['name'=>'description'])))
-    ->addField(new SelectTag('Job', options: [1=>'dev', 2=>'tech']));
+    ->addField(new SelectTag('Job', options: [1=>'dev', 2=>'tech']))
+    ->addFieldset('User Disconnection', [
+        (new InputTag('Disconnect', attributes: ['name'=>'disconnect', 'class'=>'main block_disconnect color_red'], wraps:['f'=>'span']))
+    ]);
 
 
 
 
+//pretty($form);
+
+$form->getField('InputTag_2');
 
 
-
-
-
-pretty($form);
+//pretty($form);
 (new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
+
 
 
 

@@ -22,10 +22,10 @@ class FormTest extends TestCase
         );
     }
 
-    public function testGetFormFieldsReturnArray()
+    public function testGetFieldsReturnArray()
     {
         $this->assertIsArray(
-          (new Form())->getFormFields()
+          (new Form())->getFields()
         );
     }
 }
