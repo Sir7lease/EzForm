@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Aham\EzForm;
 
 use Aham\EzForm\Tags\FieldInterface;
+use Aham\EzForm\Tags\FieldsetTag;
 
 final class Form
 {
@@ -11,39 +12,43 @@ final class Form
 
     private array $fields = [];
 
-    private static int $index = 0;
+    private static int $iField = 0;
+    private static int $iFieldset = 0;
 
-    public function __construct(array $attr=[])
+    public function __construct(array $formTagAttributes=[])
     {
         $this->formTagAttributes = [
           'action' => '',
           'method' => 'GET',
         ];
-        if(count($attr) > 0)
-            foreach($attr as $key => $value)
+        if(count($formTagAttributes) > 0)
+            foreach($formTagAttributes as $key => $value)
                 $this->formTagAttributes[$key] = $value;
     }
 
-    /**
-     * Add a new field that will be added into the form by the FormBuilder Class
-     * @param FieldInterface[]|array $field
-     */
-    public function addField(FieldInterface|array $field, string $fieldsetTarget=''): self
+    public function addField(FieldInterface $field, string $fieldsetTarget=''): self
     {
-        if(is_array($field)){
-            foreach ($field as $fieldsetName => $fields) {
-                foreach ($fields as $key => $objectField) {
-                    self::$index++;
-                    $fieldName = explode('\\', $objectField::class);
-                    $this->fields["Fieldset_$fieldsetName"][array_pop($fieldName) . '_' . self::$index] = $objectField;
-                }
-            }
-        } else {
-            self::$index++;
-            $fieldName = explode('\\',$field::class);
-            $this->fields[array_pop($fieldName) .'_'. self::$index] = $field;
-        }
+        self::$iField++;
+        $fieldName = explode('\\',$field::class);
+        $this->fields[array_pop($fieldName) .'_'. self::$iField] = $field;
 
+        return $this;
+    }
+
+    /**
+     * @param string $legend
+     * @param FieldInterface[] $fields
+     * @return $this
+     */
+    public function addFieldset(string $legend, array $fields): self
+    {
+        foreach ($fields as $objectField) {
+            self::$iField++;
+            $fieldName = explode('\\', $objectField::class);
+            $fieldsetField[array_pop($fieldName) . '_' . self::$iField] = $objectField;
+        }
+        $keyFieldset = 'Fieldset_' . ++self::$iFieldset;
+        $this->fields[$keyFieldset] = new FieldsetTag($legend, $fieldsetField);
         return $this;
     }
 

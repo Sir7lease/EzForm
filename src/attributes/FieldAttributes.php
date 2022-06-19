@@ -13,17 +13,7 @@ use Aham\EzForm\Tags\TagsTrait;
  */
 abstract class FieldAttributes implements FieldInterface
 {
-    use TagsTrait;
-
-    /** @var int $index incremented each time that the function addField() is called */
-    public static int $index = 0;
-
-    public function addAttr(array $attributes=[]): self
-    {
-        foreach($attributes as $key => $value)
-            $this->attributes[$key] = $value;
-
-        return $this;
-    }
-
+    /**
+     * TODO: NO NEED THIS CLASS ANYMORE (WILL BE DELETED)
+     */
 }

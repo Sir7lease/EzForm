@@ -12,36 +12,22 @@ namespace Aham\EzForm\Tags;
  */
 trait TagsTrait
 {
-    /** @var string $labelName will contain the label name for each field added through each new instance of this class */
-    private string $labelName;
+    protected static int $index=0;
 
     /** @var string[] $attributes contains all the attributes that will be added in the form tag */
-    protected array $attributes = [];
+    protected array $attributes;
 
     /** @var string[] $wraps contains all the tags to wrap with (label, field and/or both) */
-    protected array $wraps = [];
-
-
-    public function addWrap(array $wraps=[]): self
-    {
-        $this->wraps = $wraps;
-        return $this;
-    }
-
-
-    public function getWrap()
-    {
-        return $this->wraps;
-    }
-
-    public function getLabelName(): string
-    {
-        return $this->labelName;
-    }
+    protected array $wraps;
 
     public function getAttributes(): array
     {
         return $this->attributes;
+    }
+
+    public function getWrap()
+    {
+        return $this->wraps;
     }
 
     public function getId(): string
@@ -51,7 +37,7 @@ trait TagsTrait
 
     public function hasLabelName(): bool
     {
-        return (isset($this->labelName) && !empty($this->labelName)) ? true : false;
+        return (isset($this->labelName) && !empty($this->labelName))?? false;
     }
 
 }

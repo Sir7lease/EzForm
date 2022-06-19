@@ -10,18 +10,12 @@ use Aham\EzForm\Attributes\FieldAttributes;
  *
  * @author  Hammoumi Abdelaziz
  */
-abstract class LabelTag extends FieldAttributes implements FieldInterface
+abstract class LabelTag implements FieldInterface
 {
-    private string $labelName = 'totoTata';
-    private string $attrFor = 'id_tmp';
+    protected string $labelName;
 
-    public function getLabel()
+    public function getLabelName(): string
     {
         return $this->labelName;
-    }
-
-    public function setLabelName(string $labelName): string
-    {
-        return $this->labelName = $labelName;
     }
 }

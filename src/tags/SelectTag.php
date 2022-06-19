@@ -10,36 +10,33 @@ use Aham\EzForm\Attributes\FieldAttributes;
  *
  * @author  Hammoumi Abdelaziz
  */
-class SelectTag extends FieldAttributes implements FieldInterface
+class SelectTag extends LabelTag implements FieldInterface
 {
     use TagsTrait;
 
     /** @var string[] $selectOptions contains the options list for the select field */
-    public array $selectOptions = [];
+    private array $selectOptions;
 
-    public function __construct(string $labelName='', string $id='id_', string $name='field_')
+
+    public function __construct(string $labelName='', array $attributes=[], array $options=['null' => 'No options'], array $wraps=[])
     {
         self::$index++;
 
-        $this->attributes = [
-            'id'   => $id . self::$index,
-            'name' => $name . self::$index,
-        ];
-
         if(!empty($labelName))
             $this->labelName = $labelName;
-        else
-            $this->attributes['placeholder'] = 'Type_Something_Here';
 
-        $this->selectOptions = [
-            'noValue' => 'No Value',
-        ];
+        $this->attributes = match((bool)$attributes) {
+            true    => array_merge(['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index], $attributes),
+            default => ['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index]
+        };
+
+        $this->selectOptions = ['null' => 'Select Option']+$options;
+
+        $this->wraps = $wraps;
     }
 
-    public function addOptions(array $options): self
+    public function getOptions()
     {
-        $this->selectOptions = $options;
-        return $this;
+        return $this->selectOptions;
     }
-
 }

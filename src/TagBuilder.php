@@ -1,9 +1,14 @@
 <?php
+/**
+ * TODO: In the setWrap() method we it is repeating the same logic 3 times we can simply this part.
+ */
+
 declare(strict_types=1);
 
 namespace Aham\EzForm;
 
 use Aham\EzForm\Tags\FieldInterface;
+use Aham\EzForm\Tags\FieldsetTag;
 
 /**
  * This Class Build a Field with all the attributes
@@ -48,20 +53,20 @@ abstract class TagBuilder implements FieldInterface
         elseif (str_contains($classNameField, 'TextAreaTag'))
             $this->fieldTag = "<textarea {$this->concatAttributesField($objectField->getAttributes())} ></textarea>";
         elseif (str_contains($classNameField, 'SelectTag'))
-            $this->fieldTag = "<select {$this->concatAttributesField($objectField->getAttributes())} > {$this->buildOptionsSelect($objectField->selectOptions)} </select>";
+            $this->fieldTag = "<select {$this->concatAttributesField($objectField->getAttributes())} > {$this->buildOptionsSelect($objectField->getOptions())} </select>";
 
         return $this->setWrap();
     }
 
 
-    protected function buildFieldsetTag(string $nameFielset, array $fieldset): string
+    protected function buildFieldsetTag(string $nameFielset, FieldsetTag $fieldset): string
     {
         $fieldsetFields = '';
-        foreach ($fieldset as $classNameField => $objectField)
+        foreach ($fieldset->getFieldset() as $classNameField => $objectField)
             $fieldsetFields .= $this->buildFieldTag($classNameField, $objectField);
         return <<<FIELDSET
            <fieldset>
-              <legend>{$this->splitStringByUnderscore($nameFielset, false)}</legend>
+              <legend>{$fieldset->getLegend()}</legend>
               $fieldsetFields
            </fieldset>
         FIELDSET;
@@ -86,16 +91,6 @@ abstract class TagBuilder implements FieldInterface
         return $optionsSelect;
     }
 
-    /**
-     * Return either : the class name that created the field object (0)
-     *              or the fieldset name if a fieldset is added to the form (1)
-     */
-    private function splitStringByUnderscore(string $fieldKey, bool $className=true): string
-    {
-        return explode('_', $fieldKey)[($className) ? 0 : 1];
-    }
-
-
     private function getLabel(FieldInterface $objectField): bool|string
     {
         if($objectField->hasLabelName()){
@@ -103,7 +98,6 @@ abstract class TagBuilder implements FieldInterface
         }
         return '';
     }
-
 
     private function setWrap(): string
     {

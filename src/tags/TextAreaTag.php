@@ -3,29 +3,27 @@ declare(strict_types=1);
 
 namespace Aham\EzForm\Tags;
 
-use Aham\EzForm\Attributes\FieldAttributes;
-
 /**
  * This Class allows you to add textarea field in you form
  *
  * @author  Hammoumi Abdelaziz
  */
-class TextAreaTag extends FieldAttributes implements FieldInterface
+class TextAreaTag extends LabelTag implements FieldInterface
 {
     use TagsTrait;
 
-    public function __construct(string $labelName='', string $id='id_', string $name='field_')
+    public function __construct(string $labelName='', array $attributes=[], array $wraps=[])
     {
         self::$index++;
 
-        $this->attributes = [
-            'id'   => $id . self::$index,
-            'name' => $name . self::$index,
-        ];
-
         if(!empty($labelName))
             $this->labelName = $labelName;
-        else
-            $this->attributes['placeholder'] = 'Type_Something_Here';
+
+        $this->attributes = match((bool)$attributes) {
+            true    => array_merge(['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index], $attributes),
+            default => ['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index]
+        };
+
+        $this->wraps = $wraps;
     }
 }
