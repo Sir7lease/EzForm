@@ -5,7 +5,7 @@ use Aham\EzForm\Form;
 use Aham\EzForm\FormBuilder;
 use function PHPUnit\Framework\isInstanceOf;
 
-class Template extends FormBuilder
+class Template
 {
     private const TEMPLATES_JSON_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'template.json';
     private $contentFile = [];
@@ -27,8 +27,13 @@ class Template extends FormBuilder
         return $this;
     }
 
+    /**
+     * @param string $nameTemplate
+     * @return Form|null
+     */
     public function getTemplate(string $nameTemplate): ?Form
     {
+        $this->getContent();
         if( !isset($this->contentFile) ) {
             echo "There is no template saved yet. Use saveTemplate() method to save a template.";
             exit;
@@ -39,7 +44,6 @@ class Template extends FormBuilder
             exit;
         }
 
-        $this->getContent();
         $this->template = @unserialize($this->contentFile[$nameTemplate]);
         if ( $this->template ) {
             return $this->template;
@@ -58,6 +62,11 @@ class Template extends FormBuilder
         echo $this->buildForm($this->template)->renderForm();
     }*/
 
+    /**
+     * @param string $nameTemplate
+     * @param Form $form
+     * @return $this
+     */
     public function saveTemplate(string $nameTemplate, Form $form): self
     {
         $fileinfo = 'no_file_info';
@@ -89,6 +98,10 @@ class Template extends FormBuilder
         return $this;
     }
 
+    /**
+     * @param string $nameTemplate
+     * @return $this
+     */
     public function removeTemplate(string $nameTemplate): self
     {
         $this->getContent();

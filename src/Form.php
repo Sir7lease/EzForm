@@ -5,8 +5,9 @@ namespace Aham\EzForm;
 
 use Aham\EzForm\Tags\FieldInterface;
 use Aham\EzForm\Tags\FieldsetTag;
+use Aham\EzForm\Templates\Template;
 
-final class Form
+final class Form extends Template
 {
     private array $formTagAttributes = [];
 
@@ -35,25 +36,31 @@ final class Form
         return $this;
     }
 
-    public function getField(string $nameField)
+    public function removeField(string $nameField): self
     {
         foreach($this->fields as $kf => $vf){
-            if(str_contains($kf, 'Fieldset_')){
-                echo "<pre>";
-                print_r( $this->getFields()[$kf]->getFieldset() );
-                echo "</pre>";
-                foreach($vf->getFieldset() as $kff => $vff){
-                   if($kff===$nameField) {
-                       unset($this->getFields()[$kf]->getFieldset()[$nameField]);
-                    }
+            if(!str_contains($kf, 'Fieldset_')) {
+                foreach ($vf->getFieldset() as $kff => $vff) {
+                    if ($kff === $nameField)
+                        $vf->removeField($nameField);
                 }
-                echo "<pre>";
-                print_r( $this->getFields()[$kf]->getFieldset() );
-                echo "</pre>";
-            }elseif($kf===$nameField){
+            } elseif($kf===$nameField) {
                 unset($this->fields[$kf]);
             }
-        };
+        }
+        return $this;
+    }
+
+    public function removeFieldset(string $nameFieldset, bool $deleteFieldsInside=true): self
+    {
+        if($deleteFieldsInside) {
+            unset($this->fields[$nameFieldset]);
+        } else {
+            $fieldSaved = $this->fields[$nameFieldset]->getFieldset();
+            unset($this->fields[$nameFieldset]);
+            $this->fields = array_merge($fieldSaved, $this->fields);
+        }
+        return $this;
     }
 
     /**
@@ -71,11 +78,6 @@ final class Form
         $keyFieldset = 'Fieldset_' . ++self::$iFieldset;
         $this->fields[$keyFieldset] = new FieldsetTag($legend, $fieldsetField);
         return $this;
-    }
-
-    public function removeFieldset()
-    {
-
     }
 
     public function getFormTagAttributes(): array

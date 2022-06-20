@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 use Aham\EzForm\Form;
 use Aham\EzForm\FormBuilder;
@@ -28,14 +31,16 @@ $form->addFieldset('User Connection', [
 
 
 
-
 //pretty($form);
+$templateForm = (new Template())->getTemplate('Login Form');
 
-$form->getField('InputTag_2');
+$templateForm
+    ->removeFieldset('Fieldset_1', false)
+    ->addField(
+        (new InputTag('Address', attributes: ['name'=>'address', 'class'=>'color_purple'], wraps:['l'=>'div','f'=>'div']))
+    );
 
-
-//pretty($form);
-(new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
+(new FormBuilder(['l'=>'div']))->buildForm($templateForm)->renderForm();
 
 
 

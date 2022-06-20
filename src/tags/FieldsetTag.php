@@ -29,4 +29,9 @@ class FieldsetTag implements FieldInterface
         return $this->fieldset;
     }
 
+    protected function removeField(string $nameField)
+    {
+        unset($this->fieldset[$nameField]);
+    }
+
 }
