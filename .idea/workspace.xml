@@ -4,9 +4,6 @@
     <list default="true" id="6538b965-854d-40b1-b14c-86ae22335508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tags/FieldsetTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tags/FieldsetTag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/Template.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +107,7 @@
       <workItem from="1655295149725" duration="1894000" />
       <workItem from="1655336737106" duration="8600000" />
       <workItem from="1655397684968" duration="36425000" />
-      <workItem from="1655657726154" duration="8588000" />
+      <workItem from="1655657726154" duration="10398000" />
     </task>
     <servers />
   </component>
@@ -133,7 +130,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/index.php</url>
-          <line>19</line>
+          <line>29</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

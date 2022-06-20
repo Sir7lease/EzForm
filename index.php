@@ -3,6 +3,17 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+/**
+ * TODO:    Need to add the posibility to order the fields like so:
+ *              - sortFields() will sort the fields and fieldsets
+ *              - sortFieldsetFields($namefieldset) will sort the fields only inside a fieldset
+ *          Need to add the feature that'll allow to save form input if a page is left like so:
+ *              - Generate first an id in the <form data-id='the_id_generated'> tag so we do
+ *                know on which form each inputs belong to.
+ *              - Either event on each keydown or lost focus of a field save the form inputs
+ *                on a json file (probably in Javascript/Jquery)
+ */
+
 use Aham\EzForm\Form;
 use Aham\EzForm\FormBuilder;
 use Aham\EzForm\Tags\InputTag;
