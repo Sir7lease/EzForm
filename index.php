@@ -28,8 +28,8 @@ function pretty($obj){
     echo "</pre>";
 }
 
+// Form build from class
 $form = new Form(['method'=>'POST']);
-
 $form->addFieldset('User Connection', [
         (new InputTag('Login', attributes: ['name'=>'login', 'class'=>'main block_login color_blue'], wraps:['f'=>'span'])),
         (new InputTag('Password', ['type'=>'password', 'name'=>'password'], ['l'=>'div','lf'=>'div']))
@@ -39,19 +39,24 @@ $form->addFieldset('User Connection', [
     ->addFieldset('User Disconnection', [
         (new InputTag('Disconnect', attributes: ['name'=>'disconnect', 'class'=>'main block_disconnect color_red'], wraps:['f'=>'span']))
     ]);
+pretty($form);
+(new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
+
+$form->sortFields($form->getFields());
 
 
 
-//pretty($form);
-$templateForm = (new Template())->getTemplate('Login Form');
 
+
+
+//// Form build from saved template
+/*$templateForm = (new Template())->getTemplate('Login Form');
 $templateForm
     ->removeFieldset('Fieldset_1', false)
     ->addField(
         (new InputTag('Address', attributes: ['name'=>'address', 'class'=>'color_purple'], wraps:['l'=>'div','f'=>'div']))
-    );
+    );*/
 
-(new FormBuilder(['l'=>'div']))->buildForm($templateForm)->renderForm();
 
 
 

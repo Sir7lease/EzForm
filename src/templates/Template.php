@@ -3,12 +3,13 @@ namespace Aham\EzForm\Templates;
 
 use Aham\EzForm\Form;
 use Aham\EzForm\FormBuilder;
+use Aham\EzForm\SortFields;
 use function PHPUnit\Framework\isInstanceOf;
 
-class Template
+class Template extends SortFields
 {
     private const TEMPLATES_JSON_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'template.json';
-    private $contentFile = [];
+    private array $contentFile;
     private string|Form $template;
 
     public function __construct()
@@ -22,7 +23,6 @@ class Template
             echo "There is no template saved yet. Use saveTemplate() method to save a template." . PHP_EOL;
             exit;
         }
-
         echo implode( '<br/>', array_keys( $this->contentFile ) ) . '<br/><br/>';
         return $this;
     }
