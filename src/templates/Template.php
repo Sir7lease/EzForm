@@ -9,7 +9,7 @@ use function PHPUnit\Framework\isInstanceOf;
 class Template extends SortFields
 {
     private const TEMPLATES_JSON_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'template.json';
-    private array $contentFile;
+    protected array $contentFile;
     private string|Form $template;
 
     public function __construct()
@@ -45,7 +45,7 @@ class Template extends SortFields
         }
 
         $this->template = @unserialize($this->contentFile[$nameTemplate]);
-        if ( $this->template ) {
+        if ( $this->template instanceof Form) {
             return $this->template;
         } else {
             echo "The template '$nameTemplate' is corrupted and therefore can't be used. You can delete the template with removeTemplate() method.";

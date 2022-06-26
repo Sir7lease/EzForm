@@ -42,11 +42,7 @@ $form->addFieldset('User Connection', [
 pretty($form);
 (new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
 
-$form->sortFields($form->getFields());
-
-
-
-
+$form->sortFields($form, );
 
 
 //// Form build from saved template

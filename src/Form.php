@@ -9,12 +9,11 @@ use Aham\EzForm\Templates\Template;
 
 final class Form extends Template
 {
+    private static int $iField = 0;
+
     private array $formTagAttributes = [];
 
-    private array $fields = [];
-
-    private static int $iField = 0;
-    private static int $iFieldset = 0;
+    protected array $fields = [];
 
     public function __construct(array $formTagAttributes=[])
     {
@@ -27,27 +26,36 @@ final class Form extends Template
                 $this->formTagAttributes[$key] = $value;
     }
 
-    public function addField(FieldInterface $field, string $fieldsetTarget=''): self
+    /**
+     * @param string $legend
+     * @param FieldInterface[] $fields
+     * @return $this
+     */
+    public function addFieldset(string $legend, array $fields): self
     {
-        self::$iField++;
-        $fieldName = explode('\\',$field::class);
-        $this->fields[array_pop($fieldName) .'_'. self::$iField] = $field;
+        $iFieldset = 1;
+        foreach ($fields as $objectField) {
+            $uniqIdField = uniqid();
+            $objectField->setId("id_$uniqIdField");
+            $objectField->setName("name_$uniqIdField");
+            $objectField->setFieldType();
+            $fieldName = explode('\\', $objectField::class);
+            $fieldsetField[$iFieldset++] = $objectField;
+        }
+        $this->fields[++self::$iField] = new FieldsetTag($legend, $fieldsetField);
 
         return $this;
     }
 
-    public function removeField(string $nameField): self
+    public function addField(FieldInterface $field, string $fieldsetTarget=''): self
     {
-        foreach($this->fields as $kf => $vf){
-            if(!str_contains($kf, 'Fieldset_')) {
-                foreach ($vf->getFieldset() as $kff => $vff) {
-                    if ($kff === $nameField)
-                        $vf->removeField($nameField);
-                }
-            } elseif($kf===$nameField) {
-                unset($this->fields[$kf]);
-            }
-        }
+        $uniqIdField = uniqid();
+        $field->setId("id_$uniqIdField");
+        $field->setName("name_$uniqIdField");
+        $field->setFieldType();
+        $fieldName = explode('\\', $field::class);
+        $this->fields[++self::$iField] = $field;
+
         return $this;
     }
 
@@ -63,20 +71,18 @@ final class Form extends Template
         return $this;
     }
 
-    /**
-     * @param string $legend
-     * @param FieldInterface[] $fields
-     * @return $this
-     */
-    public function addFieldset(string $legend, array $fields): self
+    public function removeField(string $nameField): self
     {
-        foreach ($fields as $objectField) {
-            self::$iField++;
-            $fieldName = explode('\\', $objectField::class);
-            $fieldsetField[array_pop($fieldName) . '_' . self::$iField] = $objectField;
+        foreach($this->fields as $kf => $vf){
+            if(!str_contains($kf, 'Fieldset_')) {
+                foreach ($vf->getFieldset() as $kff => $vff) {
+                    if ($kff === $nameField)
+                        $vf->removeField($nameField);
+                }
+            } elseif($kf===$nameField) {
+                unset($this->fields[$kf]);
+            }
         }
-        $keyFieldset = 'Fieldset_' . ++self::$iFieldset;
-        $this->fields[$keyFieldset] = new FieldsetTag($legend, $fieldsetField);
         return $this;
     }
 

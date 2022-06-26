@@ -38,32 +38,31 @@ abstract class TagBuilder implements FieldInterface
 
     /**
      * Build a field with a label (if requested) and wrap label, field and/or label+field with tags (div, span, p...)
-     * @param string $classNameField
      * @param FieldInterface $objectField
      * @return string field ready to be added to the <form>
      */
-    protected function buildFieldTag(string $classNameField, FieldInterface $objectField): string
+    protected function buildFieldTag(FieldInterface $objectField): string
     {
         $this->singleFieldWrap = $objectField->getWrap();
 
         $this->labelTag = $this->getLabel($objectField);
 
-        if (str_contains($classNameField, 'InputTag'))
+        if ($objectField->getFieldType() === 'Input')
             $this->fieldTag = "<input {$this->concatAttributesField($objectField->getAttributes())} />";
-        elseif (str_contains($classNameField, 'TextAreaTag'))
+        elseif ($objectField->getFieldType() === 'TextArea')
             $this->fieldTag = "<textarea {$this->concatAttributesField($objectField->getAttributes())} ></textarea>";
-        elseif (str_contains($classNameField, 'SelectTag'))
+        elseif ($objectField->getFieldType() === 'Select')
             $this->fieldTag = "<select {$this->concatAttributesField($objectField->getAttributes())} > {$this->buildOptionsSelect($objectField->getOptions())} </select>";
 
         return $this->setWrap();
     }
 
 
-    protected function buildFieldsetTag(string $nameFielset, FieldsetTag $fieldset): string
+    protected function buildFieldsetTag(FieldsetTag $fieldset): string
     {
         $fieldsetFields = '';
-        foreach ($fieldset->getFieldset() as $classNameField => $objectField)
-            $fieldsetFields .= $this->buildFieldTag($classNameField, $objectField);
+        foreach ($fieldset->getFieldset() as $objectField)
+            $fieldsetFields .= $this->buildFieldTag($objectField);
         return <<<FIELDSET
            <fieldset>
               <legend>{$fieldset->getLegend()}</legend>

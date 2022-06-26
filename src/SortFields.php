@@ -7,35 +7,52 @@ use Aham\EzForm\Tags\TagsTrait;
 
 abstract class SortFields
 {
+
+    private Form $form;
+    private array $sorter;
+
     /**
-     *  @example Format: ['key_number_field'=>'sorted order you want',...]
-     *           Given:  [InputTag_3][SelectTag_5] -(in param should be)-> [3=>2,5=>1]
-     *           Output: [SelectTag_1][InputTag_2]
+     * @example Format: ['key_number_field'=>'sorted order you want',...]
+     *          Given:  [InputTag_3][SelectTag_5] -(in param should be)-> [3=>2,5=>1]
+     *          Output: [SelectTag_1][InputTag_2]
      *
-     *  Know that you can give a nested array, if so here's how it'll process it :
-     *      [[*],'fieldset_n'=>[**],'fieldset_n'=>[**],... ]
-     *          * : Nested array without a key will sort the first lvl of the form fields (including fieldset)
-     *          **: Nested array with a key will sort the fieldset. You need to specify the fieldset key you
-     *              wanna sort then the array of the order you want to sort the field inside of it (like the @example)
+     * Know that you can give a nested array, if so here's how it'll process it :
+     *     [[*],'fieldset_n'=>[**],'fieldset_n'=>[**],... ]
+     *         * : Nested array without a key will sort the first lvl of the form fields (including fieldset)
+     *         **: To sort fields inside of a specific fieldset, you need to specify the fieldset key then
+     *             the array of the order you want to sort the fields (like the @example)
      *
      * @param bool $insideFieldset empty array will sort only the first level of the fields
      * @return void
      */
-    public function sortFields(array $fields, array $sorter=[])
+    public function sortFields(Form $form, array $sorter=[])
     {
+        $this->form = $form;
+        $this->sorter = $sorter;
 
-
-        $tempArr=[];
         if ( empty($sorter) ) {
-            foreach($fields as $keyField => $objectField) {
-                $tempArr[$keyField[-1]] = [$keyField=>$objectField];
-            }
+            sort();
+        } else if( !empty($sorter) ) {
+
         }
-        sort($tempArr);
-        echo "<pre>";
-        print_r( $tempArr );
-        echo "</pre>";
     }
+
+    private function sort()
+    {
+        $tempArr=[];
+        foreach($this->form->getFields() as $keyField => $objectField)
+            $tempArr[$keyField[-1]] = $objectField;
+
+        ksort($tempArr);
+        $this->fields = [];
+
+        foreach($tempArr as $keyField => $objectField) {
+            $pathClassArray = explode('\\', $objectField::class);
+            $this->fields[array_pop($pathClassArray) . '_' . $keyField] = $objectField;
+        }
+    }
+
+
 
 
 }

@@ -19,16 +19,15 @@ class InputTag extends LabelTag implements FieldInterface
      */
     public function __construct(string $labelName='', array $attributes=[], array $wraps=[])
     {
-        self::$index++;
-
         if(!empty($labelName))
             $this->labelName = $labelName;
 
         $this->attributes = match((bool)$attributes) {
-            true    => array_merge(['id'   => 'id_' . self::$index, 'type' => 'text', 'name' => 'field_' . self::$index], $attributes),
-            default => ['id'   => 'id_' . self::$index, 'type' => 'text', 'name' => 'field_' . self::$index]
+            true    => array_merge(['id' => 'id_', 'type' => 'text', 'name' => 'field_'], $attributes),
+            default => ['id' => 'id_', 'type' => 'text', 'name' => 'field_']
         };
 
         $this->wraps = $wraps;
     }
+
 }

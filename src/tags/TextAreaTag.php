@@ -14,14 +14,12 @@ class TextAreaTag extends LabelTag implements FieldInterface
 
     public function __construct(string $labelName='', array $attributes=[], array $wraps=[])
     {
-        self::$index++;
-
         if(!empty($labelName))
             $this->labelName = $labelName;
 
         $this->attributes = match((bool)$attributes) {
-            true    => array_merge(['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index], $attributes),
-            default => ['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index]
+            true    => array_merge(['id' => 'id_', 'name' => 'field_'], $attributes),
+            default => ['id' => 'id_', 'name' => 'field_']
         };
 
         $this->wraps = $wraps;

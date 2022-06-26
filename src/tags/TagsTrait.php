@@ -12,7 +12,7 @@ namespace Aham\EzForm\Tags;
  */
 trait TagsTrait
 {
-    protected static int $index=0;
+    private string $fieldType;
 
     /** @var string[] $attributes contains all the attributes that will be added in the form tag */
     protected array $attributes;
@@ -35,8 +35,30 @@ trait TagsTrait
         return $this->getAttributes()['id'];
     }
 
+    public function setId(string $id)
+    {
+        $this->attributes['id'] = $id;
+    }
+
+    public function getFieldType()
+    {
+        return $this->fieldType;
+    }
+
+    public function setFieldType()
+    {
+        $pathCurrentClassArr = explode('\\',get_class($this));
+        $this->fieldType = substr(array_pop($pathCurrentClassArr), 0, -3);
+    }
+
     public function hasLabelName(): bool
     {
         return (isset($this->labelName) && !empty($this->labelName))?? false;
     }
+
+    public function setName(string $name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
 }

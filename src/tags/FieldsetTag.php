@@ -15,7 +15,6 @@ class FieldsetTag implements FieldInterface
     public function __construct(string $legend, array $fieldset)
     {
         $this->legend = $legend;
-
         $this->fieldset = $fieldset;
     }
 
@@ -32,6 +31,11 @@ class FieldsetTag implements FieldInterface
     protected function removeField(string $nameField)
     {
         unset($this->fieldset[$nameField]);
+    }
+
+    public function getFieldType()
+    {
+        return 'Fieldset';
     }
 
 }

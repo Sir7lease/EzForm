@@ -17,17 +17,14 @@ class SelectTag extends LabelTag implements FieldInterface
     /** @var string[] $selectOptions contains the options list for the select field */
     private array $selectOptions;
 
-
     public function __construct(string $labelName='', array $attributes=[], array $options=['null' => 'No options'], array $wraps=[])
     {
-        self::$index++;
-
         if(!empty($labelName))
             $this->labelName = $labelName;
 
         $this->attributes = match((bool)$attributes) {
-            true    => array_merge(['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index], $attributes),
-            default => ['id'   => 'id_' . self::$index, 'name' => 'field_' . self::$index]
+            true    => array_merge(['id' => 'id_', 'name' => 'field_'], $attributes),
+            default => ['id' => 'id_', 'name' => 'field_']
         };
 
         $this->selectOptions = ['null' => 'Select Option']+$options;
