@@ -42,16 +42,17 @@ $form->addFieldset('User Connection', [
 pretty($form);
 (new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
 
-$form->sortFields($form, );
-
-
 //// Form build from saved template
-/*$templateForm = (new Template())->getTemplate('Login Form');
+$templateForm = (new Template())->getTemplate('Login Form');
 $templateForm
     ->removeFieldset('Fieldset_1', false)
     ->addField(
         (new InputTag('Address', attributes: ['name'=>'address', 'class'=>'color_purple'], wraps:['l'=>'div','f'=>'div']))
-    );*/
+    );
+
+
+
+
 
 
 
