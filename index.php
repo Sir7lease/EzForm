@@ -39,19 +39,27 @@ $form->addFieldset('User Connection', [
     ->addFieldset('User Disconnection', [
         (new InputTag('Disconnect', attributes: ['name'=>'disconnect', 'class'=>'main block_disconnect color_red'], wraps:['f'=>'span']))
     ]);
-pretty($form);
-(new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
+//pretty($form);
+//(new FormBuilder(['l'=>'div']))->buildForm($form)->renderForm();
+
+
 
 //// Form build from saved template
-$templateForm = (new Template())->getTemplate('Login Form');
-$templateForm
+$templateForm = new Template();
+$templateForm->getTemplate('toto');
+
+//pretty($templateForm);
+
+
+
+
+
+/*$templateForm
     ->removeFieldset('Fieldset_1', false)
     ->addField(
         (new InputTag('Address', attributes: ['name'=>'address', 'class'=>'color_purple'], wraps:['l'=>'div','f'=>'div']))
     );
-
-
-
+*/
 
 
 

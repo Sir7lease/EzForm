@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6538b965-854d-40b1-b14c-86ae22335508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1653488249228.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SortFields.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/SortFields.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/Template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/template.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/template.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,16 +78,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\SirPlease\Desktop\EzForm" />
@@ -106,7 +110,11 @@
       <workItem from="1655295149725" duration="1894000" />
       <workItem from="1655336737106" duration="8600000" />
       <workItem from="1655397684968" duration="36425000" />
-      <workItem from="1655657726154" duration="52098000" />
+      <workItem from="1655657726154" duration="52414000" />
+      <workItem from="1656214995449" duration="387000" />
+      <workItem from="1656215914576" duration="2797000" />
+      <workItem from="1656364585085" duration="7296000" />
+      <workItem from="1657245967400" duration="3031000" />
     </task>
     <servers />
   </component>

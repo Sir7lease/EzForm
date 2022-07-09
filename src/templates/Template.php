@@ -4,17 +4,18 @@ namespace Aham\EzForm\Templates;
 use Aham\EzForm\Form;
 use Aham\EzForm\FormBuilder;
 use Aham\EzForm\SortFields;
+use PHPUnit\Util\Exception;
 use function PHPUnit\Framework\isInstanceOf;
 
 class Template extends SortFields
 {
     private const TEMPLATES_JSON_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'template.json';
-    protected array $contentFile;
+    protected ?array $contentFile = [];
     private string|Form $template;
 
     public function __construct()
     {
-       $this->getContent();
+
     }
 
     public function getListTemplates(): self
@@ -34,13 +35,13 @@ class Template extends SortFields
     public function getTemplate(string $nameTemplate): ?Form
     {
         $this->getContent();
-        if( !isset($this->contentFile) ) {
+        if( !isset( $this->contentFile ) ) {
             echo "There is no template saved yet. Use saveTemplate() method to save a template.";
             exit;
         }
 
         if( !array_key_exists( $nameTemplate, $this->contentFile ) ) {
-            echo "The template '$nameTemplate' doesn't exist. Use getListTemplates() method to see all the templates saved.";
+           echo "The template '$nameTemplate' doesn't exist. Use getListTemplates() method to see all the templates saved.";
             exit;
         }
 
@@ -113,6 +114,7 @@ class Template extends SortFields
     private function getContent(): void
     {
         $this->contentFile = json_decode( file_get_contents(self::TEMPLATES_JSON_FILE_PATH), true );
+        print_r($this->contentFile);
     }
 
     private function putContent(): int|bool
